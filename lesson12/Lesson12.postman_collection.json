@@ -1,0 +1,596 @@
+{
+	"info": {
+		"_postman_id": "460da0c0-fc46-4206-8ff4-f9aff8ccd6f8",
+		"name": "Lesson12",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41792366",
+		"_collection_link": "https://hillei.postman.co/workspace/Couse~dcc05b11-eecb-47a4-b3f8-9532ffb6d143/collection/41792366-460da0c0-fc46-4206-8ff4-f9aff8ccd6f8?action=share&source=collection_link&creator=41792366"
+	},
+	"item": [
+		{
+			"name": "Grab a random joke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce is not empty\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json).to.have.property(\"setup\");\r",
+							"    pm.expect(json).to.have.property(\"punchline\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}random_joke",
+					"host": [
+						"{{base_url}}random_joke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab jokes by programming  type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce is not empty\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    json.forEach(t => {\r",
+							"        pm.expect(t).to.have.property(\"setup\");\r",
+							"        pm.expect(t).to.have.property(\"punchline\");\r",
+							"    })\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return programming joke type\", () => {\r",
+							"    const json = pm.response.json()[0];\r",
+							"    pm.expect(json.type).to.eql(\"programming\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/programming/random",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"programming",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab jokes by programming  type Random Ten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce is not empty\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    json.forEach(t => {\r",
+							"        pm.expect(t).to.have.property(\"setup\");\r",
+							"        pm.expect(t).to.have.property(\"punchline\");\r",
+							"    })\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return programming joke type\", () => {\r",
+							"    const json = pm.response.json()[0];\r",
+							"    pm.expect(json.type).to.eql(\"programming\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"All jokes are random\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    const jokeId = jokes.map(joke => joke.id);\r",
+							"    const uniqueIds = [...new Set(jokeId)];\r",
+							"    pm.expect(uniqueIds.length).to.eql(jokes.length);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return 10 jokes\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    pm.expect(jokes).to.be.an(\"array\");\r",
+							"    pm.expect(jokes.length).to.eql(10);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/programming/ten",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"programming",
+						"ten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab jokes by general type Random Ten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce is not empty\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    json.forEach(t => {\r",
+							"        pm.expect(t).to.have.property(\"setup\");\r",
+							"        pm.expect(t).to.have.property(\"punchline\");\r",
+							"    })\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return general joke type\", () => {\r",
+							"    const json = pm.response.json()[0];\r",
+							"    pm.expect(json.type).to.eql(\"general\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"All jokes are random\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    const jokeId = jokes.map(joke => joke.id);\r",
+							"    const uniqueIds = [...new Set(jokeId)];\r",
+							"    pm.expect(uniqueIds.length).to.eql(jokes.length);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return 10 jokes\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    pm.expect(jokes).to.be.an(\"array\");\r",
+							"    pm.expect(jokes.length).to.eql(10);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/general/ten",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"general",
+						"ten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab jokes by general type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce is not empty\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    json.forEach(t => {\r",
+							"        pm.expect(t).to.have.property(\"setup\");\r",
+							"        pm.expect(t).to.have.property(\"punchline\");\r",
+							"    })\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return general joke type\", () => {\r",
+							"    const json = pm.response.json()[0];\r",
+							"    pm.expect(json.type).to.eql(\"general\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/general/random",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"general",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab jokes by knock-knock type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce is not empty\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    json.forEach(t => {\r",
+							"        pm.expect(t).to.have.property(\"setup\");\r",
+							"        pm.expect(t).to.have.property(\"punchline\");\r",
+							"    })\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return knock-knock joke type\", () => {\r",
+							"    const json = pm.response.json()[0];\r",
+							"    pm.expect(json.type).to.eql(\"knock-knock\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/knock-knock/random",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"knock-knock",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab jokes by dad type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce is not empty\", () => {\r",
+							"    const json = pm.response.json();\r",
+							"    json.forEach(t => {\r",
+							"        pm.expect(t).to.have.property(\"setup\");\r",
+							"        pm.expect(t).to.have.property(\"punchline\");\r",
+							"    })\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return dad joke type\", () => {\r",
+							"    const json = pm.response.json()[0];\r",
+							"    pm.expect(json.type).to.eql(\"dad\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/dad/random",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"dad",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab ten random jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return 10 jokes\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    pm.expect(jokes).to.be.an(\"array\");\r",
+							"    pm.expect(jokes.length).to.eql(10);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce contains type, setup и punchline\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    jokes.forEach(joke => {\r",
+							"        pm.expect(joke).to.have.property(\"type\");\r",
+							"        pm.expect(joke).to.have.property(\"setup\");\r",
+							"        pm.expect(joke).to.have.property(\"punchline\");\r",
+							"        pm.expect(joke).to.have.property(\"id\");\r",
+							"    });\r",
+							"});\r",
+							"pm.test(\"All jokes are random\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    const jokeId = jokes.map(joke => joke.id);\r",
+							"    const uniqueIds = [...new Set(jokeId)];\r",
+							"    pm.expect(uniqueIds.length).to.eql(jokes.length);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}random_ten",
+					"host": [
+						"{{base_url}}random_ten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab 5 of random jokes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce return 5 jokes\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    pm.expect(jokes).to.be.an(\"array\");\r",
+							"    pm.expect(jokes.length).to.eql(5);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Responce contains type, setup и punchline\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    jokes.forEach(joke => {\r",
+							"        pm.expect(joke).to.have.property(\"type\");\r",
+							"        pm.expect(joke).to.have.property(\"setup\");\r",
+							"        pm.expect(joke).to.have.property(\"punchline\");\r",
+							"        pm.expect(joke).to.have.property(\"id\");\r",
+							"    });\r",
+							"});\r",
+							"pm.test(\"All jokes are random\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    const jokeId = jokes.map(joke => joke.id);\r",
+							"    const uniqueIds = [...new Set(jokeId)];\r",
+							"    pm.expect(uniqueIds.length).to.eql(jokes.length);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/random/5",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"random",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grab  of random jokes count",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The jokes count corresponds to the requested number\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    const urlParts = pm.request.url.toString().split('/');\r",
+							"    const requestedNumber = parseInt(urlParts[urlParts.length - 1]);\r",
+							"    pm.expect(jokes).to.be.an(\"array\");\r",
+							"    pm.expect(jokes.length).to.eql(requestedNumber);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Responce contains type, setup и punchline\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    jokes.forEach(joke => {\r",
+							"        pm.expect(joke).to.have.property(\"type\");\r",
+							"        pm.expect(joke).to.have.property(\"setup\");\r",
+							"        pm.expect(joke).to.have.property(\"punchline\");\r",
+							"        pm.expect(joke).to.have.property(\"id\");\r",
+							"    });\r",
+							"});\r",
+							"pm.test(\"All jokes are random\", () => {\r",
+							"    const jokes = pm.response.json();\r",
+							"    const jokeId = jokes.map(joke => joke.id);\r",
+							"    const uniqueIds = [...new Set(jokeId)];\r",
+							"    pm.expect(uniqueIds.length).to.eql(jokes.length);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}jokes/random/15",
+					"host": [
+						"{{base_url}}jokes"
+					],
+					"path": [
+						"random",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get joke types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Return status 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Returns expected joke types\", () => {\r",
+							"    const types = pm.response.json();\r",
+							"    const expected = [\"general\", \"knock-knock\", \"programming\", \"dad\"];\r",
+							"    pm.expect(types.length).to.be.above(0);\r",
+							"    expected.forEach(cat => {\r",
+							"        pm.expect(types).to.include(cat);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}types",
+					"host": [
+						"{{base_url}}types"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}
