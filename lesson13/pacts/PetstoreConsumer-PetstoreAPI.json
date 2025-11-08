@@ -1,0 +1,105 @@
+{
+  "consumer": {
+    "name": "PetstoreConsumer"
+  },
+  "interactions": [
+    {
+      "description": "request for user",
+      "request": {
+        "headers": {
+          "accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/v2/user/user1"
+      },
+      "response": {
+        "body": {
+          "email": "john@example.com",
+          "firstName": "John",
+          "id": 9223372036854769000,
+          "lastName": "Johnson",
+          "password": "password123",
+          "phone": "1234567890",
+          "userStatus": 0,
+          "username": "user1"
+        },
+        "headers": {
+          "Content-Type": "application/json",
+          "content-type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "request for user",
+      "providerStates": [
+        {
+          "name": "successful operation"
+        }
+      ],
+      "request": {
+        "headers": {
+          "accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/v2/user/user1"
+      },
+      "response": {
+        "body": {
+          "email": "user1@mail.ru",
+          "firstName": "John",
+          "id": 9223372036854769000,
+          "lastName": "Johnson",
+          "password": "12345",
+          "phone": "89607075876",
+          "userStatus": 0,
+          "username": "user1"
+        },
+        "headers": {
+          "Content-Type": "application/json",
+          "content-type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "16.0.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.28",
+      "models": "1.3.5"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "PetstoreAPI"
+  }
+}
