@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "69e17f40-5751-4e57-a8e7-f2a155e710d2",
+		"name": "CatAPI Integration Tests",
+		"description": "Integration tests covering images, votes, and favourites modules of The Cat API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41792366",
+		"_collection_link": "https://hillei.postman.co/workspace/Couse~dcc05b11-eecb-47a4-b3f8-9532ffb6d143/collection/41792366-69e17f40-5751-4e57-a8e7-f2a155e710d2?action=share&source=collection_link&creator=41792366"
+	},
+	"item": [
+		{
+			"name": "Test 1 - Full Flow (Image → Vote → Favourite)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+							"var json = pm.response.json();",
+							"pm.environment.set('image_id', json[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/images/search",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"images",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vote",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Vote created', function () { pm.response.to.have.status(201); });",
+							"var json = pm.response.json();",
+							"pm.environment.set('vote_id', json.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{api_key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"image_id\": \"{{image_id}}\", \"value\": 1, \"sub_id\": \"{{sub_id}}\"}"
+				},
+				"url": {
+					"raw": "{{base_url}}/votes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"votes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Favourite",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Favourite created', function () { pm.response.to.have.status(200); });",
+							"var json = pm.response.json();",
+							"pm.environment.set('favourite_id', json.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{api_key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"image_id\": \"{{image_id}}\", \"sub_id\": \"{{sub_id}}\"}"
+				},
+				"url": {
+					"raw": "{{base_url}}/favourites",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"favourites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Votes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Votes retrieved', function () { pm.response.to.have.status(200); });",
+							"var votes = pm.response.json();",
+							"pm.expect(votes.some(v => v.id == pm.environment.get('vote_id'))).to.be.true;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/votes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"votes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Favourites",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Favourites retrieved', function () { pm.response.to.have.status(200); });",
+							"var favs = pm.response.json();",
+							"pm.expect(favs.some(f => f.id == pm.environment.get('favourite_id'))).to.be.true;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{api_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/favourites",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"favourites"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
