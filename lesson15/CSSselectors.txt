@@ -1,0 +1,15 @@
+Rozetka.ua 
+
+Вибір товару за категорією та додавання до корзини 
+1. ul[class='sidebar-theme pb-2'] li:nth-child(6) a:nth-child(1) -- обираємо  розділ  
+2. .top-widget__categories-item:nth-child(1) - обираємо перший елемент у категорії "Популярні категорії"   
+3. div.item:nth-child(1) - натискаємо на перший елемент у каталозі 
+4. button[class='buy-button button button--with-icon button--green button--medium buy-button--tile'] натискаємо на кнопку купити 
+5. li.cart-list__item - перевіряємо що товар додано до кошика 
+
+Видалення товару з корзини 
+1. button[data-testid="header-cart-btn"] - відкриваємо кошик 
+2. div.cart-product__body - перевіряємо що товар є у кошику  
+3. button#cartProductActions0 - відкриваємо кебаб-меню першого елемента у кошику 
+4. div.menu-list-wrap.py-2.px-4[id^="cartProductActions0"] - очікуємо завантаження елементу та натискаємо на нього 
+5. div[data-testid="empty-cart"] - перевіряємо що модалка із пустм кошиком відкрилась 
