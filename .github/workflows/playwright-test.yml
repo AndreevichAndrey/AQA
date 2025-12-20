@@ -1,0 +1,65 @@
+name: Lesson21 Tests
+
+on:
+  push:
+    branches: ['main', 'master', 'lesson21']
+  pull_request:
+    branches: ['main', 'master']
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Playwright Tests & Allure Report
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lesson21
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+          cache-dependency-path: 'lesson21/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run linting
+        run: npm run lint --if-present
+
+      - name: Run Playwright tests
+        run: npm test
+
+      - name: Generate Allure report
+        if: always()
+        run: npm run allure:single --if-present
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: lesson21/playwright-report/
+          retention-days: 30
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: lesson21/test-results/
+          retention-days: 30
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-report
+          path: lesson21/allure-report/
+          retention-days: 30
