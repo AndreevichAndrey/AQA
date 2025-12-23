@@ -3,6 +3,7 @@ node_modules/
 .idea/
 build/
 allure*/
+.env/
 
 # Playwright
 /test-results/

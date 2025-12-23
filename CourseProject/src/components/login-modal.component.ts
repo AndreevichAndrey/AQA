@@ -9,7 +9,7 @@ export class LoginModal {
     private get passwordInput(): Locator {
         return this.BaseLocator.locator('//div[@class="login-field"]/input[@id="login-password"]');
     }
-    private get registerBtn(): Locator {
+    private get loginBtn(): Locator {
         return this.BaseLocator.locator('//button[@type="submit"]');
     }
     private get logInError(): Locator {
@@ -23,7 +23,7 @@ export class LoginModal {
         await this.passwordInput.fill(password);
     }
     public async clickLogInBtn(): Promise<void> {
-        await this.registerBtn.click();
+        await this.loginBtn.click();
     }
     public async verifyLogInError(): Promise<string> {
         await this.logInError.waitFor({ state: 'visible', timeout: 5000 });
@@ -31,4 +31,4 @@ export class LoginModal {
         return errorText?.trim() || '';
     }
 }
-////form[@class="login-modal-form"]
+// end of LoginModal
