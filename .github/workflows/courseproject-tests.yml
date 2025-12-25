@@ -57,11 +57,13 @@ jobs:
           # pack the generated report into a single tar.gz for easy download
           tar -czf ./allure-report.tar.gz -C ./allure-report .
 
-      - name: Upload Allure report to Pages artifact
+      - name: Upload Allure report artifact for Pages
         if: always()
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
-          path: CourseProject/allure-report/
+          name: github-pages
+          path: CourseProject/allure-report.tar.gz
+          retention-days: 30
 
       - name: Deploy Allure report to GitHub Pages
         if: always()
