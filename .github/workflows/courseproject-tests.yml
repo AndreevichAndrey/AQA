@@ -38,6 +38,16 @@ jobs:
       - name: Run linting
         run: npm run lint --if-present
 
+      - name: Create .env from GitHub Secrets
+        if: always()
+        run: |
+          cat > .env <<'EOF'
+          VALID_USER_EMAIL=${{ secrets.VALID_USER_EMAIL }}
+          VALID_USER_PASSWORD=${{ secrets.VALID_USER_PASSWORD }}
+          INVALID_USER_EMAIL=${{ secrets.INVALID_USER_EMAIL }}
+          INVALID_USER_PASSWORD=${{ secrets.INVALID_USER_PASSWORD }}
+          EOF
+
       - name: Run Playwright tests
         env:
           VALID_USER_EMAIL: ${{ secrets.VALID_USER_EMAIL }}
