@@ -75,11 +75,6 @@ jobs:
           name: github-pages
           path: CourseProject/allure-report.tar.gz
           retention-days: 30
-
-      - name: Deploy Allure report to GitHub Pages
-        if: always()
-        uses: actions/deploy-pages@v1
-
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
         if: always()
@@ -127,3 +122,22 @@ jobs:
           name: trace-files
           path: CourseProject/test-results/**/trace.zip
           retention-days: 30
+
+  deploy:
+    name: Deploy Allure report to GitHub Pages
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
