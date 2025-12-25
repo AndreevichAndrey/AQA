@@ -6,6 +6,9 @@ test.describe('Income test', () => {
         await ForHelpIncomePage.goto();
         await ForHelpMainPage.login(validUser.email, validUser.password);
     });
+    test('Verify Income page title', async ({ ForHelpIncomePage }) => {
+        await ForHelpIncomePage.verifyTitleText('Прибутки');
+    });
     test('User can add and delete income', async ({ ForHelpIncomePage }) => {
         const date = '2024-06-15';
         const currency = 'USD';

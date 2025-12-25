@@ -72,4 +72,7 @@ export class ForHelpBasePage {
         const classes = (await body.getAttribute('class')) || '';
         return classes;
     }
+    public async openRegisterModal(): Promise<void> {
+        await this.registerBtn.click();
+    }
 }

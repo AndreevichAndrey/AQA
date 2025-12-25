@@ -17,7 +17,8 @@ export class RegisterModal {
         await this.emailInput.fill(email);
     }
     public async fillPassword(password: string): Promise<void> {
-        await this.passwordInput.fill(password);
+        await this.passwordInput.nth(0).fill(password);
+        await this.passwordInput.nth(1).fill(password);
     }
     public async clickRegisterBtn(): Promise<void> {
         await this.registerBtn.click();
