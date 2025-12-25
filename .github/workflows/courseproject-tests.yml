@@ -47,7 +47,6 @@ jobs:
           INVALID_USER_EMAIL=${{ secrets.INVALID_USER_EMAIL }}
           INVALID_USER_PASSWORD=${{ secrets.INVALID_USER_PASSWORD }}
           EOF
-
       - name: Run Playwright tests
         env:
           VALID_USER_EMAIL: ${{ secrets.VALID_USER_EMAIL }}
@@ -65,16 +64,16 @@ jobs:
         if: always()
         run: |
           # generate the report from results into ./allure-report
-          npx allure-commandline generate ./allure-results -o ./CourseProject/allure-report --clean
+          npx allure-commandline generate ./allure-results -o ./allure-report --clean
           # pack the generated report into a single tar.gz for easy download
-          tar -czf ./CourseProject/allure-report.tar.gz -C ./CourseProject/allure-report .
-
-      - name: Upload Allure report to GitHub Pages
+          tar -czf ./allure-report.tar.gz -C ./allure-report .
+      - name: Upload Allure report artifact for Pages
         if: always()
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
-          path: CourseProject/allure-report
-
+          name: github-pages
+          path: CourseProject/allure-report.tar.gz
+          retention-days: 30
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
         if: always()
