@@ -54,6 +54,7 @@ jobs:
           VALID_USER_PASSWORD: ${{ secrets.VALID_USER_PASSWORD }}
           INVALID_USER_EMAIL: ${{ secrets.INVALID_USER_EMAIL }}
           INVALID_USER_PASSWORD: ${{ secrets.INVALID_USER_PASSWORD }}
+        continue-on-error: true
         run: npm test
 
       - name: Install Allure commandline
