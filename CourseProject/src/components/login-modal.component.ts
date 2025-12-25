@@ -31,4 +31,3 @@ export class LoginModal {
         return errorText?.trim() || '';
     }
 }
-// end of LoginModal

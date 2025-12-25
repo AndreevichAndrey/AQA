@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://new.fophelp.pro",
+      "localStorage": [
+        {
+          "name": "fophelp-theme-preference",
+          "value": "light"
+        }
+      ]
+    }
+  ]
+}

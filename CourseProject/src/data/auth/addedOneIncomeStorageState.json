@@ -1,0 +1,65 @@
+{
+  "cookies": [
+    {
+      "name": "X-Access-Token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtci53aW5mYXN0QGdtYWlsLmNvbSIsImp0aSI6IjJmZjIzNGVkLTZhMzYtNDc3YS1hZGM3LTU0MWE5OGEyZjYwOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXJzIiwiZXhwIjoxNzY2Njc3NjcwLCJpc3MiOiJodHRwczovL25ldy5mb3BoZWxwLnBybyIsImF1ZCI6Imh0dHBzOi8vbmV3LmZvcGhlbHAucHJvIn0.S6ZhbdQ8q8qrAxHk-EtIG7jGuSOU4T0aaZSQ9pv6PFc",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1766670473.009841,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "X-Username",
+      "value": "mr.winfast%40gmail.com",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1766688473.009996,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "X-Refresh-Token",
+      "value": "ef49277b-2266-4b7a-afcf-b5c081105f5b",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1766688473.010025,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "Session-User",
+      "value": "mr.winfast%40gmail.com",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1766688473.010049,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "X-Refresh-Expires",
+      "value": "25.12.2025%2013%3A47%3A50",
+      "domain": "new.fophelp.pro",
+      "path": "/",
+      "expires": 1766671373.010072,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://new.fophelp.pro",
+      "localStorage": [
+        {
+          "name": "fophelp-theme-preference",
+          "value": "light"
+        }
+      ]
+    }
+  ]
+}

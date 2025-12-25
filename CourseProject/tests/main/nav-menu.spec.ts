@@ -22,10 +22,7 @@ test.describe('Navigation Menu Tests', () => {
         expect(itemCount).toBe(NAV_MENU_ITEMS.length);
     });
     test('Can click menu item by text', async ({ ForHelpMainPage }) => {
-        // Click on 'Прибутки' menu item
         await ForHelpMainPage.NavContainer.clickMenuItemByText('Прибутки');
-        // Verify page navigated or menu item is highlighted
-        // You can add specific assertions based on your app behavior
     });
     test('Menu item text matches exactly with expected items', async ({ ForHelpMainPage }) => {
         const menuItemsText = await ForHelpMainPage.NavContainer.getMenuItemsText();
@@ -37,11 +34,7 @@ test.describe('Navigation Menu Tests', () => {
 
     test('Navigation menu maintains structure after page interactions', async ({ ForHelpMainPage }) => {
         const initialMenuItems = await ForHelpMainPage.NavContainer.getMenuItemsText();
-
-        // Toggle theme (a page interaction)
         await ForHelpMainPage.toggleTheme();
-
-        // Menu items should remain the same
         const menuItemsAfterThemeChange = await ForHelpMainPage.NavContainer.getMenuItemsText();
         expect(menuItemsAfterThemeChange).toEqual(initialMenuItems);
     });
