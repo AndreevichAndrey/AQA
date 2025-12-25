@@ -4,22 +4,22 @@ export class ModalContentComponent {
     public constructor(private readonly BaseLocator: Locator) {}
     //Locators
     private get date(): Locator {
-        return this.BaseLocator.locator('div.modal-content>form.modal-form>div.form-row>div.form-group>input#date');
+        return this.BaseLocator.locator('form.modal-form>div.form-row>div.form-group>input#date');
     }
     private get currency(): Locator {
-        return this.BaseLocator.locator('div.modal-content>form.modal-form>div.form-row>div.form-group>select');
+        return this.BaseLocator.locator('form.modal-form>div.form-row>div.form-group>select');
     }
     private get amount(): Locator {
-        return this.BaseLocator.locator('div.modal-content>form.modal-form>div.form-group>div.amount-input-wrapper>input#amount');
+        return this.BaseLocator.locator('form.modal-form>div.form-group>div.amount-input-wrapper>input#amount');
     }
     private get currencySymbol(): Locator {
-        return this.BaseLocator.locator('div.modal-content>form.modal-form>div.form-group>div.amount-input-wrapper>span.currency-symbol');
+        return this.BaseLocator.locator('form.modal-form>div.form-group>div.amount-input-wrapper>span.currency-symbol');
     }
     private get textArea(): Locator {
-        return this.BaseLocator.locator('div.modal-content>form.modal-form>div.form-group>textarea.form-input');
+        return this.BaseLocator.locator('form.modal-form>div.form-group>textarea.form-input');
     }
     private get submitButton(): Locator {
-        return this.BaseLocator.locator('div.modal-content>form.modal-form>div>button.btn-primary');
+        return this.BaseLocator.locator('form.modal-form>div>button.btn-primary');
     }
     public async setDate(date: string): Promise<void> {
         await this.date.fill(date);
@@ -44,5 +44,21 @@ export class ModalContentComponent {
     }
     public async clickSubmitButton(): Promise<void> {
         await this.submitButton.click();
+    }
+
+    public async clickSubmitAndHandleResponse(successLocator: Locator, errorLocator: Locator, timeout = 5000): Promise<void> {
+        await this.submitButton.click();
+        try {
+            await successLocator.waitFor({ state: 'visible', timeout });
+            return;
+        } catch (e) {
+            try {
+                await errorLocator.waitFor({ state: 'visible', timeout: 2000 });
+                const text = await errorLocator.textContent();
+                throw new Error(`Submit failed with error: ${text?.trim()}`);
+            } catch {
+                throw e;
+            }
+        }
     }
 }

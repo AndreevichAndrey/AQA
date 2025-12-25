@@ -2,10 +2,10 @@
   "cookies": [
     {
       "name": "X-Access-Token",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtci53aW5mYXN0QGdtYWlsLmNvbSIsImp0aSI6IjJmZjIzNGVkLTZhMzYtNDc3YS1hZGM3LTU0MWE5OGEyZjYwOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXJzIiwiZXhwIjoxNzY2Njc3NjcwLCJpc3MiOiJodHRwczovL25ldy5mb3BoZWxwLnBybyIsImF1ZCI6Imh0dHBzOi8vbmV3LmZvcGhlbHAucHJvIn0.S6ZhbdQ8q8qrAxHk-EtIG7jGuSOU4T0aaZSQ9pv6PFc",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtci53aW5mYXN0QGdtYWlsLmNvbSIsImp0aSI6ImUxYzU0OWY0LTlkMGMtNDM3Ni05NzY1LWQ2MTM5ZTA4ZTJiNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXJzIiwiZXhwIjoxNzY2Njg1OTE4LCJpc3MiOiJodHRwczovL25ldy5mb3BoZWxwLnBybyIsImF1ZCI6Imh0dHBzOi8vbmV3LmZvcGhlbHAucHJvIn0.IFq3TzLRs--ofXCBzazxnqxbp_7Fsh6iWUMijPjZgQI",
       "domain": "new.fophelp.pro",
       "path": "/",
-      "expires": 1766670473.009841,
+      "expires": 1766678720.722914,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Strict"
@@ -15,17 +15,17 @@
       "value": "mr.winfast%40gmail.com",
       "domain": "new.fophelp.pro",
       "path": "/",
-      "expires": 1766688473.009996,
+      "expires": 1766696720.723591,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Strict"
     },
     {
       "name": "X-Refresh-Token",
-      "value": "ef49277b-2266-4b7a-afcf-b5c081105f5b",
+      "value": "34c2ff87-f29c-4e6d-a22d-fa41bb780467",
       "domain": "new.fophelp.pro",
       "path": "/",
-      "expires": 1766688473.010025,
+      "expires": 1766696720.723663,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Strict"
@@ -35,17 +35,17 @@
       "value": "mr.winfast%40gmail.com",
       "domain": "new.fophelp.pro",
       "path": "/",
-      "expires": 1766688473.010049,
+      "expires": 1766696720.723941,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Strict"
     },
     {
       "name": "X-Refresh-Expires",
-      "value": "25.12.2025%2013%3A47%3A50",
+      "value": "25.12.2025%2016%3A05%3A18",
       "domain": "new.fophelp.pro",
       "path": "/",
-      "expires": 1766671373.010072,
+      "expires": 1766679620.724015,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Strict"

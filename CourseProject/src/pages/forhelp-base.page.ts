@@ -52,7 +52,7 @@ export class ForHelpBasePage {
         await this.LoginModal.fillEmail(email);
         await this.LoginModal.fillPassword(password);
         await this.LoginModal.clickLogInBtn();
-        await this.page.context().storageState({ path: `${process.cwd()}src/data/auth/authStorageState.json` });
+        await this.page.context().storageState({ path: `${process.cwd()}/src/data/auth/authStorageState.json` });
     }
 
     public async checkUserInfo(): Promise<void> {

@@ -23,4 +23,3 @@ export class RegisterModal {
         await this.registerBtn.click();
     }
 }
-//form[@class="register-modal-form"]
