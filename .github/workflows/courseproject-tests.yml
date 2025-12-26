@@ -66,7 +66,7 @@ jobs:
           # generate the report from results into ./allure-report
           npx allure-commandline generate ./allure-results -o ./allure-report --clean
           # pack the generated report into a single tar.gz for easy download
-          tar -czf ./allure-report.tar.gz -C ./allure-report .
+          tar -czf ./allure-report.tar.gz -C ./allure-report . --exclude=lesson12/official_joke_api
       - name: Upload Allure report artifact for Pages
         if: always()
         uses: actions/upload-artifact@v4
